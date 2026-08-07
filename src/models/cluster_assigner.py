@@ -1,27 +1,9 @@
-'''
-The class should receive:
-
-the fitted model pipeline,
-the original customer-level DataFrame,
-and the preprocessed feature DataFrame X.
-
-Its main method should:
-
-Use the fitted model to predict cluster labels from X.
-Make a copy of the original customer-level DataFrame.
-Add the predicted labels as a new column called:
-'''
-
-
-
-
-
-
-
-
-
-
-
-
 class ClusterAssigner:
-    def __init__(self):
+    def __init__(self, customer_df, X, model):
+        self.customer_df=customer_df.copy()
+        self.model=model
+        self.X=X
+
+    def assign_clusters(self):
+        self.customer_df["Cluster"] = self.model.predict(self.X)
+        return self.customer_df

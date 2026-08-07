@@ -7,6 +7,7 @@ class DataValidator:
     def validate_columns(self):
         expected_columns= {'InvoiceNo', 'StockCode','Description', 'Quantity','InvoiceDate', 'UnitPrice', 'CustomerID', 'Country'}
         actual_columns=set(self.df.columns)
+        
         if actual_columns == expected_columns:
             return 'columns match as expected'
         else:
