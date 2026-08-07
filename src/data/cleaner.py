@@ -1,6 +1,6 @@
 # Import libraries
 import pandas as pd
-
+from src.utils.logger import logger
 
 
 class DataCleaner:
@@ -23,6 +23,7 @@ class DataCleaner:
             Customer-level dataframe with engineered features
 
         """ 
+        logger.info("Starting data cleaning and feature engineering")
         # Remove duplicates
         self.df.drop_duplicates(inplace=True)
 
@@ -89,6 +90,7 @@ class DataCleaner:
 
         # Drop helper column
         customer_df.drop(columns="LastPurchase", inplace=True)
+        logger.info(f"Data cleaning completed. Customer df shape: {customer_df.shape}")
 
         return customer_df
 
